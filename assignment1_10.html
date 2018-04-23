@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Assignment 1 - Ex 10</title>
+    </head>
+    <body>
+        <form id="login" action="http://satt.diegm.uniud.it/wa/test_form.php">
+            <input type="checkbox" id="rules" onclick="enable(this)" /> <label for="rules">You must accept our rules to succed the registration</label>
+            <fieldset disabled>
+                <legend>Login</legend>
+                <label type="text">Username</label> <br />
+                <input type="text" name="Username"> <br />
+                <label type="text">Password</label> <br />
+                <input type="password" name="Password"> <br />
+                <input type="submit" value="Submit" />
+            </fieldset>
+        </form>
+
+        <script type="text/javascript">
+            function enable(obj) {
+                const fieldset = document.querySelector('#login > fieldset');
+                if (obj.checked) {
+                    fieldset.removeAttribute('disabled');
+                } else {
+                    fieldset.setAttribute('disabled', 'disabled');
+                }
+            }
+        </script>
+    </body>
+</html>
