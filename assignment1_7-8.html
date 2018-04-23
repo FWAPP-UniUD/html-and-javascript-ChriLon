@@ -1,26 +1,26 @@
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Assignment 1 - Ex 7</title>
+        <title>Assignment 1 - Ex 7-8</title>
     </head>
     <body>
-        <h2>Exercise 7</h2>
+        <h2>Exercise 7-8</h2>
         <p>All you have to do is to move and click your mouse :).</p>
-        <img id="myImg" src="./images/tryme.png" alt="Try me now!" title="Try me now!" />
+        <img id="myImg" src="./images/em0.png" alt="Try me now!" title="Try me now!" />
 
         <script type="text/javascript">
             const img = document.querySelector('img#myImg');
             img.addEventListener("mouseover", function() {
-                alert('You are over me');
+                img.setAttribute('src', './images/em1.png');
             });
             img.addEventListener("mouseout", function() {
-                alert('You left me :(');
+                img.setAttribute('src', './images/em2.png');
             });
             img.addEventListener("click", function() {
-                alert('You just clicked on me!');
+                img.setAttribute('src', './images/em3.png');
             });
             img.addEventListener("contextmenu", function() {
-                alert('You can\'t copy me!');
+                img.setAttribute('src', './images/em4.png');
             });
         </script>
     </body>
