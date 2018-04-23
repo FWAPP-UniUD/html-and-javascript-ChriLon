@@ -1,1 +1,1 @@
-# html-and-javascript-ChriLon
+# Exercises/Assignments of Fundamentals Web
