@@ -1,0 +1,57 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Assignment 1 - Ex 9</title>
+    </head>
+    <body>
+        <h2>Exercise 9</h2>
+        <button id="seek">Seek</button>
+        <button id="hide">Hide</button><br />
+
+        <div id="container"></div>
+
+        <script type="text/javascript">
+            const seek = document.getElementById('seek');
+            const hide = document.getElementById('hide');
+            const container = document.getElementById('container');
+
+            seek.addEventListener('click', function() {
+                let ph = document.getElementById('placeholder');
+                // if #placeholder doesn't exists, we have to create it
+                if (ph == null) {
+                    const div = document.createElement('div');
+                    div.setAttribute('id', 'placeholder');
+                    div.setAttribute('class', 'display');
+                    const div_content = document.createTextNode("Lorem ipsum...");
+                    div.appendChild(div_content);
+                    if(container) {
+                        container.appendChild(div);
+                    }
+                } 
+                // if it exists and has hidden class
+                else if (ph.classList.contains('hidden')) {
+                    ph.setAttribute('class', 'display');
+                }
+                // else we do nothing
+            });          
+
+            hide.addEventListener('click', function() {
+                let ph = document.getElementById('placeholder');
+                // if #placeholder exists, we change its class to hidden
+                if (ph) {
+                    ph.setAttribute('class', 'hidden');
+                } 
+                // else we do nothing
+            });          
+        </script>
+
+        <style type="text/css">
+            div.display {
+                display: block;
+            }
+            div.hidden {
+                display: none;
+            }
+        </style>
+    </body>
+</html>
