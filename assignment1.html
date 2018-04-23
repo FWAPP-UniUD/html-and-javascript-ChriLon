@@ -94,11 +94,53 @@
             
         <hr />
 
-        <h2>Exercise 5</h2>
+        <h2>Exercise 5/6</h2>
+
+        <script type="text/javascript">
+            /**
+             * Method to check if there are more than 2 selects.
+             * obj is the option in a multiple select 
+             */
+
+            function atMostTwo(obj) {
+                let count = 0;
+                const parent = document.getElementById('atMostTwo');
+                for (i=0; i < parent.options.length; i++) {
+                    if (parent.options[i].selected) {
+                        count++;
+                    }
+                }
+                
+                if (count > 2) {
+                    obj.selected = false; 
+                    alert("You can select only two items.");   
+                }
+                
+            }
+        </script>
 
         <form action="http://satt.diegm.uniud.it/wa/test_form.php">
-            <label type="text">Username</label> <input type="text" name="Username"> <br />
-            <label type="text">Password</label> <input type="password" name="Password"> <br />
+            <fieldset>
+                <legend>Login</legend>
+                <label type="text">Username</label> <br />
+                <input type="text" name="Username"> <br />
+                <label type="text">Password</label> <br />
+                <input type="password" name="Password"> <br />
+            </fieldset>
+            <fieldset>
+                <legend>Extra fields</legend>
+                <input type="radio" name="radio" value="1"> Radio 1
+                <input type="radio" name="radio" value="2"> Radio 2
+                <input type="radio" name="radio" value="3"> Radio 3 <br />
+                <input type="checkbox" name="chk" value="chkval"> Check Field <br />
+                <select multiple id="atMostTwo" name="user" size="5">
+                        <option onclick="atMostTwo(this)">America</option>
+                        <option onclick="atMostTwo(this)">Europe</option>
+                        <option onclick="atMostTwo(this)">Asia</option>
+                        <option onclick="atMostTwo(this)">Africa</option>
+                        <option onclick="atMostTwo(this)">Oceania</option>
+                      </select>
+            </fieldset>
             <input type="submit" value="Submit"> 
         </form>
     </body>
