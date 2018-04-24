@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Assignment 1 - Ex 11</title>
+    </head>
+    <body>
+        <form id="generator">
+            <fieldset>
+                <legend>Lorem Ipsum Generator</legend>
+                <label for="nParag"># Paragrafi</label> <br />
+                <input type="text" id="nParag" name="nParag"> <br /> <br />
+
+                <label type="text">Length of a Paragraph</label> <br />
+                
+                <input type="radio" name="lParag" value="short"> Short
+                <input type="radio" name="lParag" value="medium"> Medium
+                <input type="radio" name="lParag" value="long"> Long
+                <input type="radio" name="lParag" value="verylong"> Very Long <br /> <br />
+
+                <input type="checkbox" id="decorate" name="decorate" /> <label for="decorate">Check if you want your text to be decorated</label> <br /><br />
+
+                <input type="submit" value="Submit" id="generate" />
+            </fieldset>
+        </form>
+
+        <div id="placeholder"></div>
+
+        <script type="text/javascript">
+            const form = document.querySelector('#generator').onsubmit =        function(e) {
+                    e.preventDefault();
+                    generateText();
+                }
+            
+            // method that do the trick
+            function generateText() {
+                const nParag = document.getElementById('nParag').value;
+                const lParag = document.querySelector('input[name="lParag"]:checked').value;
+                const decorateCheck = document.querySelector('input[name="decorate"]').checked;
+
+                let decorate = '';
+                
+                if(decorateCheck) {
+                    decorate = '/decorate';
+                }
+
+                // we have to use a proxy in order to avoid CORS errors. 
+                // CORS header is disabled in http://loremimpsum.net/api...
+                fetch("https://cors.io/?http://loripsum.net/api/" + nParag + "/" + lParag + decorate, {
+                    method: 'get'
+                }).then  (function(response) {
+                    if (!response.ok) {
+                        const res = response.text();
+                        throw Error(res.result);
+                    }
+                    response.text().then(function(text) {
+                        const placeholder = document.getElementById("placeholder");
+                        placeholder.innerHTML = text;
+                    });
+                }).catch(function(error) {
+                    const placeholder = document.getElementById("placeholder");
+                    const message = document.createElement("p");
+                    message.textContent = error;
+                    placeholder.appendChild(message);
+                });
+            }
+        </script>
+    </body>
+</html>
