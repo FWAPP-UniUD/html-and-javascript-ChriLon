@@ -26,7 +26,7 @@
         <div id="placeholder"></div>
 
         <script type="text/javascript">
-            const form = document.querySelector('#generator').onsubmit =        function(e) {
+            const form = document.querySelector('#generator').onsubmit = function(e) {
                     e.preventDefault();
                     generateText();
                 }
@@ -45,7 +45,7 @@
 
                 // we have to use a proxy in order to avoid CORS errors. 
                 // CORS header is disabled in http://loremimpsum.net/api...
-                fetch("https://cors.io/?http://loripsum.net/api/" + nParag + "/" + lParag + decorate, {
+                fetch("https://cors.io/?https://loripsum.net/api/" + nParag + "/" + lParag + decorate, {
                     method: 'get'
                 }).then  (function(response) {
                     if (!response.ok) {
